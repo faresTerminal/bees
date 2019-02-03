@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}تسجيل دخول{% endblock %}
+{% block stylesheet %}
+{% endblock %}
+{% block profile %}
+{% endblock %}
+{% block content %}
+
+
+{% if messages %}
+    <div class="alert alert-success text-center " style="margin-top: 8em;">
+        {% for message in messages %}
+
+      
+       
+            <!-- msg article published -->
+        {%if "passwordWrong" in message.tags %}
+          <p> {{message}}  </p>   
+        {%endif%} 
+        <!-- end msg article published--> 
+
+        {% endfor %}
+    </div>
+    {% endif %} 
+  
+
+
+
+  <div class="container">
+  <div class="row rows" style="margin-top: 10em;">
+
+    <div class="main">
+
+      <h3>من فضلك سجل الدخول أو <a href="/register/">إفتح حساب </a></h3>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <a href="/accounts/facebook/login/?process=login" class="btn btn-lg btn-primary btn-block my-2">Facebook</a>
+        </div>
+       
+      </div>
+      <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">أو</span>
+      </div>
+      {% if messages %}
+      <div class="messages">
+          {% for message in messages %}
+                    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+  
+
+       
+      <form role="form" action="/auth/" method="POST">{% csrf_token %}
+        
+        <div class="form-group">
+
+          <label for="inputUsernameEmail">اسم المستخدم</label>
+          <input type="text" class="form-control" id="inputUsernameEmail" name="username">
+        </div>
+        <div class="form-group">
+          
+          <label for="inputPassword">كلمة السر</label>
+          <input type="password" class="form-control" id="inputPassword" name="password">
+          <a class="pull-right" href="/reset_password/">نسيت كلمة السر؟</a>
+        </div>
+        <br/>
+        
+        <button type="submit" class="btn btn " style="background-color: #32234b !important; border:none; color:#fff;">
+          الدخول
+        </button>
+
+      </form>
+
+     
+    
+    </div>
+    
+  </div>
+</div>
+ {% if messages %}
+    <div class="messages">
+        
+        <div class="msg">{{ message }}</div>
+        
+    </div>
+    {% endif %}   
+         
+ 
+
+{% endblock %}

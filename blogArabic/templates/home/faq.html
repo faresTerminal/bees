@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}التعليمات{% endblock %}
+{% block content %}
+
+
+
+  <!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid " style="margin-top: 6.4em;">
+  <div class="container">
+    <h1 class="display-4 text-dark" style="font-size: 3em;">التعليمات</h1>
+    <p class="lead text-secondary">الأسئلة الشائعة عن الموقع</p>
+  </div>
+</div>
+  <!-- end jobotron -->
+   <nav aria-label="breadcrumb " style="margin-top: 1em">
+  <div class="container">
+  <ol class="breadcrumb shadow p-3 mb-5 bg-white rounded">
+
+    <li class="breadcrumb-item"><a href="/">الصفحة الرئسية</a></li>
+    <li class="breadcrumb-item active fonnt" aria-current="page"> التعليمات</li>
+
+  </ol>
+  </div>
+
+</nav>
+
+  <!-- container -->
+  <div class="container">
+      <p class="lead text-center border-bottom py-2 text-secondary">من بين الأسئلة التي تدور في ذهنك</p>
+
+    <!-- row-->
+    <div class="row " style="margin-top: 2em;">
+
+        <!-- column -->
+        <div class="col-lg">
+
+        </div>
+        <!-- end column -->
+
+        <!-- column -->
+        <div class="col-lg-12 ">
+         <div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link text-info" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none">
+          تعريف بالموقع
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+    مرحبا بك في موقع بيت العسل الذي يعتبر بمثابة سوق جديدة لبيع النحل و منتجاته, و ذلك بتوفير سوق الكترونية تتلائم مع احتياجات السوق.
+      </div>
+    </div>
+  </div>
+
+
+
+
+    </div>
+    <!-- end row -->
+
+  </div>
+  <!-- end container -->
+</div>
+
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title%}الصفحة الرئسية{% endblock%}
+{% block content %}
+
+
+   {% if messages %}
+    <div class="alert alert-light text-center" role="alert" style="margin-top: 6.4em;">
+        {% for message in messages %}
+
+
+
+        <!-- msg say hello for how login -->
+        {%if "welcome" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}} {{full_name}} </p>
+        {%endif%}
+        <!-- end say hello -->
+
+
+
+        <!-- password wrong -->
+        {%if "passwordWrong" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}} ... <a href="/login" style="text-decoration: none"><span>إعادة المحاولة</span></a> </p>
+        {%endif%}
+        <!-- end password wrong -->
+
+
+
+
+         <!-- msg article published -->
+        {%if "delete" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}}  </p>
+        {%endif%}
+        <!-- end msg article published-->
+
+         <!-- msg contact comment add-->
+        {%if "contactCM" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}}  </p>
+        {%endif%}
+        <!-- end msg contact comment add-->
+
+          <!-- when change password seccess -->
+        {%if "changed" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}} </p>
+        {%endif%}
+        <!-- end logout -->
+
+        <!-- when password not change -->
+        {%if "error" in message.tags %}
+          <p class="text-dark shadow p-3 mb-5 bg-white rounded"> {{message}} {{full_name}} </p>
+        {%endif%}
+        <!-- end say hello -->
+
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+
+
+    <!-- create jumbotron -->
+
+
+    <div class="jumbotron  shadow p-3 mb-5 bg-white rounded text-center" style="margin-top: 10em;">
+
+  <h1 class="display-4 " style="color: #32234b;">بيت العسل
+</h1>
+  <p class="lead">لبيع منتوج العسل</p>
+  <hr class="my-4">
+  <p>معا لتوفير سوق إلكترونية ملائمة</p>
+   {% if request.user.is_authenticated %}
+  <a class="btn btn-dark btn-md my-2 " href="/about/" role="button" style="background-color: #32234b;">المزيد.....</a>
+
+
+   {% else %}
+    <a class="btn btn-dark btn-md my-2 " href="/about/" role="button" style="background-color: #32234b;">المزيد.....</a>
+
+   <a class="btn btn-warning btn-md my-2" href="/register/" role="button">ابدأ معنا</a>
+{% endif %}
+   <!--row-->
+   <div class="row" style="margin-top: 3em;">
+    <!-- column -->
+    <div class="col-lg">
+
+
+    </div>
+    <!--end column -->
+     <!-- column -->
+     {% for sd in solo1 %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+
+     <div class="card " style="width: 18rem;">
+        <p style="background-color: {{sd.category.color}};
+              max-width: 9.5em;
+               height: 0.2em;
+              ;padding: 0.2em; border-radius: 3% 3% 0% 0%;"></p>
+
+     <a class="" href="/article/{{sd.id}}" style="color:#212529; text-decoration: none !important">
+     <img class="card-img-top" src="{{sd.image.url}}" alt="Card image cap" style="height: 10em;border-radius: 0% 0% 3% 3%;">
+     <div class="card-body">
+         <p class="card-text" > {{sd.title}}</p></a>
+
+      </div>
+     </div>
+
+    </div>
+    <!--end column -->
+    {% endfor %}
+
+
+     <!-- column -->
+
+    <div class="col-lg">
+
+    </div>
+    <!--end column -->
+
+   </div>
+   <!-- end row -->
+
+
+
+
+
+
+
+
+</div>
+    <!-- end jumbotron -->
+    <br/>
+    <br/>
+
+<div class="container">
+  <p class="lead border-bottom py-2 text-center shadow p-3 mb-5 bg-white rounded" style="margin-top: 5em;">تصنيف المنتجات</p>
+  <div class="row">
+    {% for c in cate %}
+    <div class ='col-lg-3'>
+      <a href="/topic/{{c.id}}" style="text-decoration: none;">
+      <figure class="figure">
+      <figcaption class="figure-caption" style="color: {{c.color}} !important">{{c.name}}</figcaption>
+     </figure>
+      <img src="{{c.image_category.url}}" class="figure-img img-fluid rounded" alt="...">
+    </a>
+
+    </div>
+    {%endfor %}
+
+  </div>
+
+</div>
+
+<!-- second content-->
+<!-- container-->
+<div class="container">
+  <!--row-->
+  <p class="lead border-bottom py-2 text-center shadow p-3 mb-5 bg-white rounded" style="margin-top: 5em;">عروض المنتجات</p>
+  <div class="row" style="margin-top: 5em;">
+    <!-- column initial-->
+    {% for a in all_articles%}
+    <div class="col-lg-5 col-md-5 div">
+
+      <div class="row">
+        <div class="col-lg-6 ">
+          <figure class="figure">
+             <figcaption class="figure-caption d-inline p-2  text-white" style="background-color: {{a.category.color}}">{{a.category}}</figcaption>
+
+              <a href="/article/{{a.id}}" class="my_link"> <figcaption class="figure-caption font-weight-bold text-dark my-2">{{a.title}}</figcaption></a>
+
+            <img src="{{a.image.url}}" class="figure-img img-fluid rounded my-2" alt="...">
+
+             <figcaption class="figure-caption font-weight-bold text-secondary border-top border-bottom direction">{{a.posted_on|timesince}}</figcaption>
+            </figure>
+
+        </div>
+        <div class="col-lg-6 shadow p-3 mb-5 bg-white rounded">
+
+
+           <ul class="list-group list-group-flush" style="background-color: {{a.category.color}} !important">
+             <li class="list-group-item text-center border-bottom"><div class="d-inline p-2  text-info my-2">{{a.wilaya}}</div></li>
+           <li class="list-group-item text-center border-bottom text-secondary">(تجزئة)</span>  {{a.prix}} <span>دج/كغ</span> </li>
+            <li class="list-group-item text-center text-secondary">(جملة)</span> {{a.prix_colobal}}  <span>دج/كغ</span></li>
+
+           </ul>
+           <a href="/user/{{a.avatar.id}}" style="text-decoration: none"> {{ a.article_author}}</a>
+                   <img class="rounded-circle" style="max-width: 2.5em; margin-right: 10px;height: 2.5em;" src="{{a.avatar.profile_picture.url}}">
+
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <div class="col-lg-1 col-md-1"></div>
+
+
+
+
+    <!-- end column -->
+    {% endfor %}
+
+
+  </div>
+  <!-- end row -->
+
+</div>
+<!-- end container -->
+<!-- end second content -->
+<div class="container"
+<a class="btn btn-dark btn-sm my-2 " href="#" role="button" style="background-color: #cba027;
+width: 13%;
+border-radius: 5px;" id="loadMore">عرض المزيد....</a>
+</div>
+
+{% endblock %}

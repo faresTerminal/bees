@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{user.name}}حساب الناشر{% endblock %}
+{% block content %}
+<!-- container-->
+<nav aria-label="breadcrumb " style="margin-top: 8em">
+  <div class="container">
+  <ol class="breadcrumb shadow p-3 mb-5 bg-white rounded">
+
+    <li class="breadcrumb-item"><a href="/">الصفحة الرئسية</a></li>
+    <li class="breadcrumb-item active" aria-current="page"> حساب الناشر {{user.name}}</li>
+
+  </ol>
+  </div>
+
+</nav>
+
+<div class="container">
+  <!-- row -->
+  <div class="row " style="margin-top: 5em">
+
+
+       <!-- column-->
+    <div class="col-lg-4 text-center shadow-lg p-3 mb-5 bg-white rounded my-4 " >
+     <p class="card-text">{{user.name}}</p>
+
+     <img class="card-img-top " src="{{ user.profile_picture.url }}" alt="Card image cap" style="width: 8em ;">
+     <div class="card-body">
+
+         <p class="card-text p6">تاريخ الإنضمام</p>
+         <p class="card-text text-info">{{user.name.date_joined}}</p>
+        
+         {% if request.user.is_authenticated %}
+          <a class="btn btn-dark btn-md my-2 " href="/profile/" role="button" style="background-color: #32234b; border: none;">حسابي الأصلي</a>
+          {%endif%}
+      </div>
+
+
+    </div>
+    <!-- end column -->
+     <!-- column-->
+    <div class="col-lg-8 shadow-lg p-3 mb-5 bg-white rounded">
+
+       <div class="col-lg-12 my-4 border-bottom "> <p class="h5  shadow-lg p-3 mb-5 bg-white rounded text-center" style="background-color: #32234b !important;
+       color: #fff;">عن المستخدم</p></div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 font-weight-bold">
+                                                <label>اسم الأول</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.firstname}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 font-weight-bold">
+                                                <label>البريد الالكتروني</label>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <p>مخفي</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 font-weight-bold">
+                                                <label>علاقة مع تربية النحل</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.relation}}</p>
+                                            </div>
+                                        </div>
+
+                                         <div class="row">
+                                            <div class="col-md-6 font-weight-bold">
+                                                <label>البلد</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>{{user.pays}}</p>
+                                            </div>
+                                        </div>
+
+    </div>
+    <!-- end column -->
+
+       <!-- column-->
+    <div class="col-lg">
+
+    </div>
+    <!-- end column -->
+
+  </div>
+  <!-- end row -->
+
+</div>
+<!-- end container -->
+
+<!-- create global content -->
+   <div class="container">
+
+    <div class="row" style="margin-top: 5em;">
+       <div class="col-lg-12 my-4 border-bottom "> <p class="h5  shadow-lg p-3 mb-5 bg-white rounded text-center" style="background-color: #32234b !important;
+         color: #fff;">منشورات {{user.name}}</p></div>
+
+
+
+            <!-- row-->
+            <div class="row">
+
+
+
+
+             <!-- small col -->
+             {% for dd in art %}
+             <div class="col-lg-4 col-md-6 shadow-sm p-3 mb-5 bg-white rounded">
+
+
+                    <figure class="figure">
+                       <img  src="{{dd.image.url}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+
+                   </figure>
+
+
+
+
+
+
+
+                    <a class="" href="article/{{dd.id}}" style="color:#212529; text-decoration: none !important"> <p class="h4 my-2">{{dd.title}}</p></a>
+
+
+                    <p class="h6">{{dd.posted_on}}</p>
+                    <p>
+                      <span class="badge badge-light">{{ dd.total_likes}}</span> <i class="far fa-thumbs-up" style="color:#32234b;"></i>
+                    </p>
+
+
+              </div>
+                <!-- end small col -->
+                {% endfor %}
+
+
+
+
+
+
+
+            </div>
+            <!-- end row -->
+
+
+
+    </div>
+    <!-- end row -->
+    </div>
+    <!-- end conatiner -->
+
+{% endblock %}

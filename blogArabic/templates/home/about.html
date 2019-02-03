@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}من نحن{% endblock %}
+{% block content %}
+
+
+<!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid " style="margin-top: 6.4em;">
+  <div class="container">
+    <h1 class="display-4 text-dark" style="font-size: 3em;">من نحن</h1>
+    <p class="lead text-secondary">تعرف على موقع بيت العسل</p>
+  </div>
+</div>
+  <!-- end jobotron -->
+   <nav aria-label="breadcrumb " style="margin-top: 1em">
+  <div class="container">
+  <ol class="breadcrumb shadow p-3 mb-5 bg-white rounded">
+
+    <li class="breadcrumb-item"><a href="/">الصفحة الرئسية</a></li>
+    <li class="breadcrumb-item active fonnt" aria-current="page"> من نحن</li>
+
+  </ol>
+  </div>
+
+</nav>
+
+
+<!-- container -->
+<div class="container">
+
+    <!-- row -->
+    <div class="row" style="margin-top: 10em;">
+        <!-- column -->
+        <div class="col-lg-12 col-md-12 text-center">
+            <p class="h1 py-2 text-right" style="margin-right: 1.7em;">بيت العسل سوق الكتروني مفتوح لتسويق منتجات النحل.</p>
+
+            <figure class="figure" >
+           <img  src="{% static 'images/about1.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+
+          </figure>
+
+          <p class="h2 ">خلق سوق يجمع بين البائع و المشتري</p>
+
+          <p class="h6 pr1" style="margin-bottom: 3em;">سنسعى و نسهر على تقديم أفضل المنتجات من خلال الباعا الجديرين بالثقة.</p>
+
+
+        </div>
+        <!-- end column -->
+
+    </div>
+
+    <!-- end row -->
+
+</div>
+<!-- end container -->
+
+
+
+
+<!-- container -->
+<div class="container">
+    <!-- row -->
+    <div class="row " style="margin-top: 3em;">
+        <!-- column -->
+        <div class="col-lg-6 col-md-6 border-left">
+           <p class="h4 font-weight-bold">منصة بنيت من أجل ...</p>
+           <p class="h6 pr3 text-success font-weight-bold text-left" style="margin-top: 5em;">الناس او الجمهور</p>
+           <p class="h6 pr1 text-left">جودة المنتج</p>
+           <p class="h6 pr1 text-left"> منتج أصلي</p>
+           <p class="h6 pr1 text-left">  لا لاحتكار السوق</p>
+           <p class="h6 pr1 text-left">مشاركة المنتج</p>
+           <p class="h6 pr1 text-left">   خلق سوق مناسب</p>
+           <p class="h6 pr1 text-left">   الثقة</p>
+
+           <figure class="figure">
+            <img src="{% static 'images/about2.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+
+           </figure>
+
+        </div>
+        <!-- end column -->
+
+        <!-- column -->
+        <div class="col-lg-6 col-md-6">
+              <p class="h6 pr3  font-weight-bold " style="margin-top: 6.5em;"><del class="text-danger">إعادة التسويق</del></p>
+           <p class="h6 pr1 text-"><del >لا لمضافات لعسل</del></p>
+           <p class="h6 pr1 text-"> <del>   لا لغلاء الأسعار</del></p>
+           <p class="h6 pr1 text-"><del>اختلاف السوق</del></p>
+
+
+           <figure class="figure">
+            <img src="{% static 'images/about3.jpg' %}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+
+           </figure>
+
+        </div>
+        <!-- end column -->
+
+    </div>
+    <!-- end row -->
+
+</div>
+<!-- end container -->
+
+
+
+ {% endblock %}

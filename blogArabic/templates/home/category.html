@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}تصنييف المنتج{% endblock %}
+{% block content %}
+
+
+<!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid " style="margin-top: 6.4em;">
+  <div class="container">
+    <h1 class="display-4 text-dark" style="font-size: 3em;">استكشاف المنتجات</h1>
+    <p class="lead text-secondary">طبيعة المنتجات التي يتوفر عليها الموقع</p>
+  </div>
+</div>
+  <!-- end jobotron -->
+  <nav aria-label="breadcrumb " style="margin-top: 1em">
+  <div class="container">
+  <ol class="breadcrumb shadow p-3 mb-5 bg-white rounded">
+
+    <li class="breadcrumb-item"><a href="/">الصفحة الرئسية</a></li>
+    <li class="breadcrumb-item active fonnt" aria-current="page"> المنتجات</li>
+
+  </ol>
+  </div>
+
+</nav>
+
+    <!-- row-->
+    <div class="container">
+        <p class="lead text-center border-bottom py-2 text-secondary">عرض لجميع المنتجات المتوفرة</p>
+    <div class="row" style="margin-top: 2em;">
+
+
+         <!-- column -->
+
+         {% for show in topic %}
+     <div class="col-lg-4 col-md-6">
+
+        <a class="nav-link" href="/topic/{{show.id}}">
+            <figure class="figure">
+             <img src="{{show.image_category.url}}" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
+
+             <figcaption class="figure-caption"> <p style="background-color: {{show.color}};
+              max-width: 1em;
+               height: 1em;
+              border-radius: 100%;"></p>  <span class=" font-weight-bold" >{{show.name}}</span></figcaption>
+          </figure>
+        </a>
+
+     </div>
+        <!-- end column -->
+        {% endfor %}
+
+
+    </div>
+    <!-- end row -->
+
+</div>
+<!-- end container -->
+
+
+ {% endblock %}

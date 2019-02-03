@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}مقال جديد{% endblock %}
+{% block content %}
+
+
+<!-- jumbotron -->
+  <div class="jumbotron jumbotron-fluid " style="margin-top: 6.4em;">
+  <div class="container">
+    <h1 class="display-4 text-dark" style="font-size: 3em;">بيع منتج</h1>
+    <p class="lead text-secondary">من خلال هذه الصفحة يمكنك إضافة منتج لبيعه</p>
+  </div>
+</div>
+  <!-- end jobotron -->
+  <nav aria-label="breadcrumb " style="margin-top: 1em">
+  <div class="container">
+  <ol class="breadcrumb shadow p-3 mb-5 bg-white rounded">
+
+    <li class="breadcrumb-item"><a href="/">الصفحة الرئسية</a></li>
+    <li class="breadcrumb-item active" aria-current="page">  تحرير مقال</li>
+
+  </ol>
+  </div>
+
+</nav>
+
+
+<div class="container">
+    <div class="row" style="margin-top: 2em">
+      <div class="col-lg-5">
+        <p class="font-weight-bold">تعلم كيف تنشر مقال بشكل سليم</p>
+        <p>من خلال هذا الفيديو يمكنك أن تتعلم كيف تنشر مقال بشكل سليم و إحترافي</p>
+
+      </div>
+       <div class="col-lg-7">
+        <div class="embed-responsive embed-responsive-16by9">
+           <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/axHX2gFHpdA" allowfullscreen></iframe>
+       </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+  <!-- container -->
+  <div class="container">
+      <!--row -->
+      <div class="row " style="margin-top: 5em;">
+          <!-- column-->
+
+        <div class="col-lg col-md col-sm"></div>
+        <!-- column-->
+        <div class="col-lg-10 col-md-8 col-sm-12">
+            <p class="h6 pr1  text-center font-weight-bold shadow-lg p-3 mb-5 bg-white rounded">تسويق لمنتج جديد )</p>
+
+            <!-- form -->
+            <form action="/publish/" class ="put" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                <div class="form-group ">
+
+                   {{ form|crispy }}
+                   {{form.media }}
+
+                   {{ formset.management_form }}
+                   <p class="lead my-2 border-bottom" style = 'margin-top: 4em;'>إضافة المزيد من الصور</p>
+                  {% for f in formset %}
+                   {{ f.as_p  }}
+                {% endfor %}
+
+
+
+                </div>
+
+
+  <button type="submit" class="btn btn-primary my-5 btn-lg" style="background-color: #32234b !important; border:none;">أنشر</button>
+</form>
+
+            <!-- end form -->
+
+        </div>
+        <!-- end column-->
+        <div class="col-lg col-md col-sm"></div>
+
+      </div>
+      <!-- end row-->
+  </div>
+  <!-- end container -->
+
+
+
+{% endblock %}
